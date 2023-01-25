@@ -32,7 +32,7 @@ def get_prediction():
         return
 
 #Bulk prediction
-@app.route('/predict_churn_bulk')
+@app.route('/predict_churn_bulk',methods=['POST'])
 def get_bulk_predictions():
     try:
         observations = pd.DataFrame(json.loads(request.get_json()))
@@ -41,7 +41,7 @@ def get_bulk_predictions():
     except:
         return
 
-@app.route("/get_event", methods=['POST', 'OPTIONS'])
+@app.route("/get_event")
 def get_event():
 
     try:
