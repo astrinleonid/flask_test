@@ -35,8 +35,11 @@ def get_bulk_predictions():
 
 @app.route("/get_event")
 def get_event():
-    event_id = request.args.get("event_id")
-    city = request.args.get("city")
+    try:
+        event_id = request.args.get("event_id")
+        city = request.args.get("city")
+    except:
+        pass
     # db.table_get_value_with_ID(self, table, event_id, columns)
     data = {
         "Header": "Sample Event Header",
