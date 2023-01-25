@@ -20,38 +20,45 @@ app = Flask(__name__)
 # Individual prediction
 @app.route('/')
 def get_prediction():
-    observation = pd.DataFrame()
-    for feature in features:
-        observation[feature] = [float(request.args.get(feature))]
-    prediction = str(clf.predict(observation)[0])
-    return f"Predicted value of churn: {prediction}"
+    try:
+        observation = pd.DataFrame()
+        for feature in features:
+            observation[feature] = [float(request.args.get(feature))]
+        prediction = str(clf.predict(observation)[0])
+        return f"Predicted value of churn: {prediction}"
+    except:
+        return
 
 #Bulk prediction
 @app.route('/predict_churn_bulk',methods=['POST'])
 def get_bulk_predictions():
-    observations = pd.DataFrame(json.loads(request.get_json()))
-    result = {'Prediction' : list(clf.predict(observations).astype(str))}
-    return jsonify(result)
+    try:
+        observations = pd.DataFrame(json.loads(request.get_json()))
+        result = {'Prediction' : list(clf.predict(observations).astype(str))}
+        return jsonify(result)
+    except:
+        return
 
 @app.route("/get_event")
 def get_event():
     try:
         event_id = request.args.get("event_id")
         city = request.args.get("city")
+
+        # db.table_get_value_with_ID(self, table, event_id, columns)
+        data = {
+            "Header": "Sample Event Header",
+            "Description": "Sample Event Description",
+            "Date": "Sample Event Date",
+            "Genre": "Sample Event Genre",
+            "Price": "Sample Event Price",
+            "Location": "Sample Event Location",
+        }
+        print(f"recived: event_id={event_id}")
+        data = [1,2,3,4]
+        return jsonify(data)
     except:
-        pass
-    # db.table_get_value_with_ID(self, table, event_id, columns)
-    data = {
-        "Header": "Sample Event Header",
-        "Description": "Sample Event Description",
-        "Date": "Sample Event Date",
-        "Genre": "Sample Event Genre",
-        "Price": "Sample Event Price",
-        "Location": "Sample Event Location",
-    }
-    print(f"recived: event_id={event_id}")
-    data = [1,2,3,4]
-    return jsonify(data)
+        return
 
 
 
