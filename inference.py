@@ -33,7 +33,25 @@ def get_bulk_predictions():
     result = {'Prediction' : list(clf.predict(observations).astype(str))}
     return jsonify(result)
 
+@app.route("/get_event")
+def get_event():
+    event_id = request.args.get("event_id")
+    city = request.args.get("city")
+    # db.table_get_value_with_ID(self, table, event_id, columns)
+    data = {
+        "Header": "Sample Event Header",
+        "Description": "Sample Event Description",
+        "Date": "Sample Event Date",
+        "Genre": "Sample Event Genre",
+        "Price": "Sample Event Price",
+        "Location": "Sample Event Location",
+    }
+    print(f"recived: event_id={event_id}")
+    data = [1,2,3,4]
+    return jsonify(data)
 
-app.run()
+
+
+app.run(host='0.0.0.0', port=8080)
 
 
