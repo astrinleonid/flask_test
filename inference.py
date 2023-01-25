@@ -7,6 +7,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from flask import Flask
 from flask import request
 from flask import jsonify
+from flask.ext.cors import CORS, cross_origin
 
 FEATURES = ['is_male','num_inters','late_on_payment','age','years_in_contract']
 # Reading datafiles
@@ -16,6 +17,8 @@ with open('churn_model.pkl', 'rb') as file:
 features = FEATURES
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'application/json'
 
 # Individual prediction
 @app.route('/')
@@ -39,8 +42,9 @@ def get_bulk_predictions():
     except:
         return
 
-@app.route("/get_event")
+@app.route("/get_event", methods=['POST', 'OPTIONS'])
 def get_event():
+
     try:
         event_id = request.args.get("event_id")
         city = request.args.get("city")
