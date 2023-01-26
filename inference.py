@@ -61,6 +61,7 @@ def get_event():
         indexes = np.array(range(20, 40))
         percentages = np.random.rand(20)
         data = pd.DataFrame({'index': indexes, 'percentage': percentages})
+        data = data.sort_values('percentage', ascending = False)
         data = data.to_dict(orient='records')
 
         return jsonify(data)
