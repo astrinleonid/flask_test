@@ -69,7 +69,7 @@ def get_event():
         print(f"Home {home_city} Target {target_city} ID {event_id}")
 
         dfr = city_data[home_city]
-        sample_text = dfr.loc[event_id, 'description']
+        sample_text = dfr.loc[int(event_id), 'description']
 
         print(sample_text[:10])
         result = model(city_data[target_city], sample_text, 20)[['id', 'similarity_percentage']]
