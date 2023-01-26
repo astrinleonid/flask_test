@@ -62,12 +62,12 @@ def get_bulk_predictions():
 @app.route("/get_event")
 def get_event():
     try:
-        event_id = int(request.args.get("event_id"))
+        event_id = (request.args.get("event_id"))
         home_city = request.args.get("home_city")
         target_city = request.args.get("target_city")
-        return(event_id)
-        print(f"Home {home_city} Target {target_city} ID {event_id}")
 
+        print(f"Home {home_city} Target {target_city} ID {event_id}")
+        return (event_id)
         dfr = city_data[home_city]
         sample_text = dfr.loc[event_id, 'description']
 
