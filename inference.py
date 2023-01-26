@@ -15,9 +15,9 @@ from prediction import model
 # df_MSK = pd.read_sql("SELECT * FROM MSK", db.__connection__)
 # df_TLV = pd.read_sql("SELECT * FROM TLV", db.__connection__)
 # db.__connection__.close()
-df_NYC =
+df_NYC = pd.read_csv('ny_events.csv')
 
-df_TLV =
+df_TLV = pd.read_csv('TLV_events.csv')
 
 city_data = {'TLV' : df_TLV, 'MSK' : df_MSK, 'NYC' : df_NYC}
 
