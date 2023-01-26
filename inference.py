@@ -74,7 +74,7 @@ def get_event():
     except:
         return
 
-#app.run(host='0.0.0.0', port=8080)
-app.run()
+app.run(host='0.0.0.0', port=8080)
+#app.run()
 
 
