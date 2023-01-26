@@ -10,13 +10,13 @@ from flask import jsonify
 from db_class import StorageDatabase
 from prediction import model
 
-# db = StorageDatabase("sql11.freemysqlhosting.net","3306","sql11593194","sql11593194","2CPjwjQHDQ")
-# df_NYC = pd.read_sql("SELECT * FROM NYC", db.__connection__)
-# df_MSK = pd.read_sql("SELECT * FROM MSK", db.__connection__)
-# df_TLV = pd.read_sql("SELECT * FROM TLV", db.__connection__)
-# db.__connection__.close()
-df_NYC = pd.read_csv('ny_events.csv')
-df_TLV = pd.read_csv('TLV_events.csv')
+db = StorageDatabase("sql11.freemysqlhosting.net","3306","sql11593194","sql11593194","2CPjwjQHDQ")
+df_NYC = pd.read_sql("SELECT * FROM NYC", db.__connection__)
+df_MSK = pd.read_sql("SELECT * FROM MSK", db.__connection__)
+df_TLV = pd.read_sql("SELECT * FROM TLV", db.__connection__)
+db.__connection__.close()
+# df_NYC = pd.read_csv('ny_events.csv')
+# df_TLV = pd.read_csv('TLV_events.csv')
 
 city_data = {'TLV' : df_TLV,  'NYC' : df_NYC}
 
