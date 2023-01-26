@@ -61,7 +61,6 @@ def get_bulk_predictions():
 
 @app.route("/get_event")
 def get_event():
-
     try:
         event_id = int(request.args.get("event_id"))
         home_city = request.args.get("home_city")
