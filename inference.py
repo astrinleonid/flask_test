@@ -16,7 +16,6 @@ from prediction import model
 # df_TLV = pd.read_sql("SELECT * FROM TLV", db.__connection__)
 # db.__connection__.close()
 df_NYC = pd.read_csv('ny_events.csv')
-
 df_TLV = pd.read_csv('TLV_events.csv')
 
 city_data = {'TLV' : df_TLV,  'NYC' : df_NYC}
@@ -75,7 +74,7 @@ def get_event():
     except:
         return
 
-# app.run(host='0.0.0.0', port=3000)
-app.run()
+app.run(host='0.0.0.0', port=8080)
+#app.run()
 
 
