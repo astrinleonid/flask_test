@@ -66,6 +66,7 @@ def get_event():
         event_id = int(request.args.get("event_id"))
         home_city = request.args.get("home_city")
         target_city = request.args.get("target_city")
+        return(event_id)
         print(f"Home {home_city} Target {target_city} ID {event_id}")
 
         dfr = city_data[home_city]
@@ -80,7 +81,7 @@ def get_event():
     except:
         return
 
-app.run(host='0.0.0.0', port=8080)
-# app.run()
+app.run(host='0.0.0.0', port=3000)
+#app.run()
 
 
