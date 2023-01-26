@@ -14,7 +14,7 @@ db = StorageDatabase("sql11.freemysqlhosting.net","3306","sql11593194","sql11593
 df_NYC = pd.read_sql("SELECT * FROM NYC", db.__connection__)
 df_MSK = pd.read_sql("SELECT * FROM MSK", db.__connection__)
 df_TLV = pd.read_sql("SELECT * FROM TLV", db.__connection__)
-
+db.__connection__.close()
 city_data = {'TLV' : df_TLV, 'MSK' : df_MSK, 'NYC' : df_NYC}
 
 
