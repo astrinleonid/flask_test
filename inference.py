@@ -15,10 +15,16 @@ from prediction import model
 # df_MSK = pd.read_sql("SELECT * FROM MSK", db.__connection__)
 # df_TLV = pd.read_sql("SELECT * FROM TLV", db.__connection__)
 # db.__connection__.close()
-df_NYC = pd.read_csv('ny_events.csv')
-df_TLV = pd.read_csv('TLV_events.csv')
+df_NYC = pd.read_csv('NYC.csv')
+df_TLV = pd.read_csv('TLV.csv')
+df_MSK = pd.read_csv('MSK.csv')
 
-city_data = {'TLV' : df_TLV,  'NYC' : df_NYC}
+city_data = {'TLV' : df_TLV, 'MSK' : df_MSK, 'NYC' : df_NYC}
+
+# df_TLV.to_csv('TLV.csv')
+# df_MSK.to_csv('MSK.csv')
+# df_NYC.to_csv('NYC.csv')
+
 
 
 FEATURES = ['is_male','num_inters','late_on_payment','age','years_in_contract']
@@ -74,7 +80,7 @@ def get_event():
     except:
         return
 
-app.run(host='0.0.0.0', port=8080)
-#app.run()
+# app.run(host='0.0.0.0', port=8080)
+app.run()
 
 

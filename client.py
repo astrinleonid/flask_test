@@ -5,7 +5,7 @@ import requests
 
 
 def main():
-    URL = 'http://34.238.42.93:3000'
+    URL = 'http://34.238.42.93:8080'
     BULK_PATH = 'predict_churn_bulk'
 
     # Reading datafiles
