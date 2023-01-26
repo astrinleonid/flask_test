@@ -19,7 +19,7 @@ df_NYC = pd.read_csv('ny_events.csv')
 
 df_TLV = pd.read_csv('TLV_events.csv')
 
-city_data = {'TLV' : df_TLV, 'MSK' : df_MSK, 'NYC' : df_NYC}
+city_data = {'TLV' : df_TLV,  'NYC' : df_NYC}
 
 
 FEATURES = ['is_male','num_inters','late_on_payment','age','years_in_contract']
