@@ -58,7 +58,11 @@ def get_event():
             "Location": "Sample Event Location",
         }
         print(f"recived: event_id={event_id}")
-        data = [1,2,3,4]
+        indexes = np.array(range(20, 40))
+        percentages = np.random.rand(20)
+        data = pd.DataFrame({'index': indexes, 'percentage': percentages})
+        data = data.to_dict(orient='records')
+
         return jsonify(data)
     except:
         return
